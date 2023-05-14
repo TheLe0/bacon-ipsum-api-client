@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Version>1.0.0</Version>
     <Authors>Leonardo Tosin</Authors>
-    <PackageProjectUrl>https://github.com/TheLe0/create-api-client</PackageProjectUrl>
-    <PackageIconUrl>![logo](https://github.com/TheLe0/bacen-dollar-api-client/assets/40045069/b14e8770-75d7-40d1-adc7-4a8dde1885c9)</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/TheLe0/bacon-ipsum-api-client</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/TheLe0/create-api-client/assets/40045069/56511ca3-77c8-4774-b587-c4a7c23e0c9c</PackageIconUrl>
     <PackageIcon>images\logo.png</PackageIcon>
     <PackageReadmeFile>docs\README.md</PackageReadmeFile>
-	  <PackageTags>API client</PackageTags>
-	  <Description>Replace this for your package description</Description>
+	  <PackageTags>API client Text Generator</PackageTags>
+	  <Description>Random text generator</Description>
 	  <Copyright>Copyright © Leonardo Tosin</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	  <AssemblyVersion>1.0.0</AssemblyVersion>
