@@ -1,4 +1,4 @@
-name: "Deploy Create.API.Client"
+name: "Deploy Bacon.Ipsum.API.Client"
 
 on:
   push:
@@ -19,9 +19,9 @@ jobs:
         id: publish_nuget
         uses: alirezanet/publish-nuget@v3.0.4
         with:
-          PROJECT_FILE_PATH: src/Create.API.Client/Create.API.Client.csproj
-          PACKAGE_NAME: Create.API.Client
-          VERSION_FILE_PATH: src/Create.API.Client/Create.API.Client.csproj
+          PROJECT_FILE_PATH: src/Bacon.Ipsum.API.Client/Bacon.Ipsum.API.Client.csproj
+          PACKAGE_NAME: Bacon.Ipsum.API.Client
+          VERSION_FILE_PATH: src/Bacon.Ipsum.API.Client/Bacon.Ipsum.API.Client.csproj
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}

@@ -1,4 +1,4 @@
-name: "Deploy Create.API.Client.DependencyInjection"
+name: "Deploy Bacon.Ipsum.API.Client.DependencyInjection"
 
 on:
   push:
@@ -19,9 +19,9 @@ jobs:
         id: publish_nuget
         uses: alirezanet/publish-nuget@v3.0.4
         with:
-          PROJECT_FILE_PATH: src/Create.API.Client.DependencyInjection/Create.API.Client.DependencyInjection.csproj
-          PACKAGE_NAME: Create.API.Client.DependencyInjection
-          VERSION_FILE_PATH: src/Create.API.Client.DependencyInjection/Create.API.Client.DependencyInjection.csproj
+          PROJECT_FILE_PATH: src/Bacon.Ipsum.API.Client.DependencyInjection/Bacon.Ipsum.API.Client.DependencyInjection.csproj
+          PACKAGE_NAME: Bacon.Ipsum.API.Client.DependencyInjection
+          VERSION_FILE_PATH: src/Bacon.Ipsum.API.Client.DependencyInjection/Bacon.Ipsum.API.Client.DependencyInjection.csproj
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
