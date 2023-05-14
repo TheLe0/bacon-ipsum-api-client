@@ -1,59 +1,96 @@
-# Create API Client
+# Bacon Ipsum .NET API Client
 
-[![Unit and Integration Tests](https://github.com/TheLe0/create-api-client/actions/workflows/tests.yml/badge.svg)](https://github.com/TheLe0/create-api-client/actions/workflows/tests.yml)
+[![Unit and Integration Tests](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/tests.yml/badge.svg)](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/tests.yml)
+
+![bacon-ipsum-banner1](https://github.com/TheLe0/create-api-client/assets/40045069/46189b98-39ab-414b-9f6c-8893ffc7ff03)
 
 ## Introduction
 
-This a template for quickly creating client libraries for consuming APIs in .NET. The template is already a complete solution, you can quickly personalizate it to your own APIs.
+This is a .NET package for random text generation. Good for testing the responsivity of front-end applications to see the behaviour of the layouts, if it grows and decreases in the ideal proportion.
 
-This templete contains:
+## Packages
 
-* Unit and integration tests;
-* An isolated DI package;
-* Samples on how to use (WebAPI and Console);
-* Workflows (CI and CD).
+   | Package | Version | Downloads | Workflow |
+   |---------|---------|-----------|----------|
+   | [Bacon.Ipsum.API.Client](https://www.nuget.org/packages/Bacon.Ipsum.API.Client/) | [![NuGet Version](https://img.shields.io/nuget/v/Bacon.Ipsum.API.Client.svg)](https://www.nuget.org/packages/Bacon.Ipsum.API.Client/ "NuGet Version")| [![NuGet Downloads](https://img.shields.io/nuget/dt/Bacon.Ipsum.API.Client.svg)](https://www.nuget.org/packages/Bacon.Ipsum.API.Client/ "NuGet Downloads") | [![Deploy](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/deploy_nuget_api_client.yml/badge.svg)](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/deploy_nuget_api_client.yml) |
+   | [Bacon.Ipsum.API.Client.DependencyInjection](https://www.nuget.org/packages/Bacon.Ipsum.API.Client.DependencyInjection/) | ![NuGet Version](https://img.shields.io/nuget/v/Bacon.Ipsum.API.Client.DependencyInjection.svg) | [![NuGet Downloads](https://img.shields.io/nuget/dt/Bacon.Ipsum.API.Client.DependencyInjection.svg)](https://www.nuget.org/packages/Bacon.Ipsum.API.Client.DependencyInjection "NuGet Downloads") | [![Deploy](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/deploy_nuget_api_client_di.yml/badge.svg)](https://github.com/TheLe0/bacon-ipsum-api-client/actions/workflows/deploy_nuget_api_client_di.yml) |
 
-The goal of the template is to simplify the process of creating client libraries for APIs in .NET, allowing you to focus on business logic rather than worrying about implementing API calls.
+## Endpoints
 
-The repository includes detailed documentation on how to use the template, as well as examples of usage. It also includes a guide on how to contribute to the project and report issues.
+1. [GenerateSentenceAsync](https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1): Generate a text with a specific amount of sentences;
 
-If you need to create a client library for consuming an API in .NET, the .NET template for API clients can be a good option to save time and effort.
+```csharp
+var response = await client.TextGenerator
+    .GenerateSentenceAsync(1)
+    .ConfigureAwait(false);
+);
+```
 
-The solution was designed with the best softwares approaches to avoid code coupling and easy to adapt and add new stuff to it.
+1. [GenerateParagraphAsync](https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1): Generate a text with a specific amount of paragraphs;
+
+```csharp
+var response = await client.TextGenerator
+    .GenerateParagraphAsync(1)
+    .ConfigureAwait(false);
+);
+```
 
 ## Configuration
 
-After you created your repository based on this template, you have just a few steps to do for your package be avaliable on NuGet.
+This Api integration is ver simple, there is no authentication/authorization requirements, you can use it with almost no configurations.
 
-1. On the Github repository secrets add a new secret called ```NUGET_API_KEY``` and the value you must generate a key on NuGet, [here](https://www.nuget.org/account/apikeys);
+You can instanciate this client in three different ways:
 
-2. On the ```csproj``` files (both the main project and the DI) and change the following parameters with your own data:
+1. Using default configs (This uses the values inside the Configurations resource file):
 
 ```csharp
-    <Version>1.0.0</Version>
-    <Authors>Leonardo Tosin</Authors>
-    <PackageProjectUrl>https://github.com/TheLe0/create-api-client</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/TheLe0/bacen-dollar-api-client/assets/40045069/b14e8770-75d7-40d1-adc7-4a8dde1885c9</PackageIconUrl>
-    <PackageIcon>images\logo.png</PackageIcon>
-    <PackageTags>API client</PackageTags>
-   <Description>Replace this for your package description</Description>
-   <Copyright>Copyright © Leonardo Tosin</Copyright>
-   <AssemblyVersion>1.0.0</AssemblyVersion>
-   <FileVersion>1.0.0</FileVersion>
-    <PackageVersion>1.0.0</PackageVersion>
+var client = new BaconIpsumApiClient();
 ```
 
-Where:
+or by dependency injection:
 
-* <b>Version, AssemblyVersion, FileVersion and PackageVersion</b>: The version of your package to be released. Is a good approach all versions be the same;
-* <b>Authors</b>: The main authors and contributors to the project;
-* <b>PackageProjectUrl</b>: The repository of your project;
-* <b>PackageIconUrl</b>: The url of the package logo;
-* <b>PackageIcon</b>: The logo of your package (you must changed the logo.png on the project root with your own logo);
-* <b>Copyright</b>: The signature of your package;
-* <b>PackageTags</b>: The key words of your package, for searching on NuGet;
-* <b>Description</b>: The small description of your project.
+```csharp
+services.AddBaconIpsumApiClient();
+```
 
-3. Refactor all classes and objects names called ```Create.API.Client```, ```CreateApiClient``` to your project preference and business logic.
+2. Only configurating the API base url:
 
-And now you are ready to go!
+```csharp
+var client = new BaconIpsumApiClient(baseUrl);
+```
+
+or by dependency injection:
+
+```csharp
+services.AddBaconIpsumApiClient(baseUrl);
+```
+
+3. And setup manually all configurations with your preferences:
+
+```csharp
+var configs = new BaconIpsumApiClientConfiguration
+{
+    BaseUrl = baseUrl,
+    MaxTimeout = maxTimeOut,
+    ThrowOnAnyError = throwOnErrors,
+    StartWithLorem = true,
+    Type = TextContentType.MEAT_AND_FILLER
+};
+
+var client = new BaconIpsumApiClient(configs);
+```
+
+or by dependency injection:
+
+```csharp
+var configs = new BaconIpsumApiClientConfiguration
+{
+    BaseUrl = baseUrl,
+    MaxTimeout = maxTimeOut,
+    ThrowOnAnyError = throwOnErrors,
+    StartWithLorem = true,
+    Type = TextContentType.MEAT_AND_FILLER
+};
+
+services.AddBaconIpsumApiClient(configs);
+```
