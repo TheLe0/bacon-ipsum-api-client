@@ -11,7 +11,8 @@ namespace Bacon.Ipsum.API.Client.UnitTests
 
         public TextGeneratorTest()
         {
-            _mockHttpClient = new Mock<IBaconIpsumApiHttpClient>();
+            _mockHttpClient = new Mock<IBaconIpsumApiHttpClient>()
+                .SetupMock();
             _client = new BaconIpsumApiClient(_mockHttpClient.Object);
         }
 

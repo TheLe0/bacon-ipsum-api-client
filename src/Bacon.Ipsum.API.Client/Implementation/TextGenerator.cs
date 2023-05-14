@@ -20,7 +20,6 @@ namespace Bacon.Ipsum.API.Client.Implementation
             if (sentences <= 0) return string.Empty;
 
             Endpoint.SetQueryParam(Parameters.Sentences, sentences);
-            SetupDefaultParameters();
 
             var generatedText = await GetAsync<IEnumerable<string>>()
                 .ConfigureAwait(false);
@@ -35,7 +34,6 @@ namespace Bacon.Ipsum.API.Client.Implementation
             if (paragraphs <= 0) return string.Empty;
 
             Endpoint.SetQueryParam(Parameters.Paragraph, paragraphs);
-            SetupDefaultParameters();
 
             var generatedText = await GetAsync<IEnumerable<string>>()
                 .ConfigureAwait(false);
@@ -43,12 +41,6 @@ namespace Bacon.Ipsum.API.Client.Implementation
             if (generatedText == null) return string.Empty;
 
             return generatedText.FirstOrDefault();
-        }
-
-        private void SetupDefaultParameters()
-        {
-            Endpoint.SetQueryParam(Parameters.Type, "meat-and-fille");
-            Endpoint.SetQueryParam(Parameters.Format, "json");
         }
     }
 }

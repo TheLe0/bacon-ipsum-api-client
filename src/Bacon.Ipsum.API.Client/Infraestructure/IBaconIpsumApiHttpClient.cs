@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Bacon.Ipsum.API.Client.Configuration;
+using RestSharp;
 using System.Threading.Tasks;
 
 namespace Bacon.Ipsum.API.Client.Infraestructure
@@ -7,5 +8,6 @@ namespace Bacon.Ipsum.API.Client.Infraestructure
     {
         Task<T> GetAsync<T>(RestRequest request);
         string GetBaseUrl();
+        BaconIpsumApiClientConfiguration GetConfiguration();
     }
 }

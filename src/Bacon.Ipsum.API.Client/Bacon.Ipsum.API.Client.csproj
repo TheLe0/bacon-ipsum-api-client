@@ -35,6 +35,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Configurations.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\OutputFormats.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>OutputFormats.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Parameters.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -45,12 +50,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Routes.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\TextContentTypes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextContentTypes.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Configurations.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Configurations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\OutputFormats.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OutputFormats.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Parameters.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -59,6 +73,10 @@
     <EmbeddedResource Update="Resources\Routes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Routes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\TextContentTypes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextContentTypes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

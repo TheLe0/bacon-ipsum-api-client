@@ -1,7 +1,11 @@
 ﻿using Bacon.Ipsum.API.Client.Configuration;
+using Bacon.Ipsum.API.Client.Extension;
 using Bacon.Ipsum.API.Client.Infraestructure;
+using Bacon.Ipsum.API.Client.Resources;
 using Flurl;
 using RestSharp;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Bacon.Ipsum.API.Client.Implementation
@@ -15,6 +19,7 @@ namespace Bacon.Ipsum.API.Client.Implementation
         {
             _httpClient = new BaconIpsumApiHttpClient(baseUrl);
             Endpoint = _httpClient.GetBaseUrl();
+            SetupDefaultParameters();
         }
 
 
@@ -22,18 +27,21 @@ namespace Bacon.Ipsum.API.Client.Implementation
         {
             _httpClient = restApiClient;
             Endpoint = _httpClient.GetBaseUrl();
+            SetupDefaultParameters();
         }
 
         protected BaseApiClient()
         {
             _httpClient = new BaconIpsumApiHttpClient();
             Endpoint = _httpClient.GetBaseUrl();
+            SetupDefaultParameters();
         }
 
         protected BaseApiClient(BaconIpsumApiClientConfiguration configuration)
         {
             _httpClient = new BaconIpsumApiHttpClient(configuration);
             Endpoint = _httpClient.GetBaseUrl();
+            SetupDefaultParameters();
         }
 
         protected Task<T> GetAsync<T>()
@@ -47,6 +55,25 @@ namespace Bacon.Ipsum.API.Client.Implementation
         private void RefreshEndpoint()
         {
             Endpoint.Reset();
+            SetupDefaultParameters();
+        }
+
+        private void SetupDefaultParameters()
+        {
+            Endpoint.SetQueryParam(Parameters.Type, 
+                _httpClient
+                    .GetConfiguration()
+                    .Type
+                    .ToTypeParameter()
+            );
+            Endpoint.SetQueryParam(Parameters.StartWithLorem,
+                Convert.ToInt32(
+                    _httpClient
+                        .GetConfiguration()
+                        .StartWithLorem
+                )
+            );
+            Endpoint.SetQueryParam(Parameters.Format, OutputFormats.JSON);
         }
     }
 }
