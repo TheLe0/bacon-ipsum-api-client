@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.0</Version>
+    <Authors>Leonardo Tosin</Authors>
+    <PackageProjectUrl>https://github.com/TheLe0/create-api-client</PackageProjectUrl>
+    <PackageIconUrl>![logo](https://github.com/TheLe0/bacen-dollar-api-client/assets/40045069/b14e8770-75d7-40d1-adc7-4a8dde1885c9)</PackageIconUrl>
+    <PackageIcon>images\logo.png</PackageIcon>
+    <PackageReadmeFile>docs\README.md</PackageReadmeFile>
+	  <PackageTags>API client</PackageTags>
+	  <Description>Replace this for your package description</Description>
+	  <Copyright>Copyright © Leonardo Tosin</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	  <AssemblyVersion>1.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0</FileVersion>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <PackageVersion>1.0.0</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\logo.png" Pack="true" Visible="false" PackagePath="images\logo.png" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="docs\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl" Version="3.0.7" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Configurations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Configurations.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Parameters.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Parameters.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Routes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Routes.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Configurations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Configurations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Parameters.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Parameters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Routes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Routes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
